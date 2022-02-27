@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>Image Gallery</title>
+
+    <script src="https://kit.fontawesome.com/d7e0398109.js" crossorigin="anonymous"></script>
+
+
+    <!-- firebase-auth scripts -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-storage.js"></script>
+
+
+    <script>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCDVomsJnbzCgSsApHDXgpBIK9mEGVFMGE",
+            authDomain: "loginpage-practice.firebaseapp.com",
+            projectId: "loginpage-practice",
+            storageBucket: "loginpage-practice.appspot.com",
+            messagingSenderId: "536012277549",
+            appId: "1:536012277549:web:ae4f0db34136e821eb35a4"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+
+</head>
+
+<body>
+
+    <div class="upper-section flex">
+
+        <button id="uploadBtn"> <span class="icon-gap"><i class="fa-solid fa-cloud-arrow-up"></i></span> UPLOAD
+            IMAGE</button>
+
+        <span id="loaderForUpload" style="display: none;">
+            <img class="loader" src="./Images/Rolling-SVG2.svg" alt="">
+        </span>
+
+        <input type="file" id="inputImage" accept="image/*">
+        <label class="flex" for="inputImage"> <span class="icon-gap"><i class="fa-solid fa-image"></i></span> Choose a
+            Photo</label>
+        <span style="margin-left: 5px;">
+            <strong>Chosen File: </strong>
+            <span id="file-name">None</span>
+        </span>
+    </div>
+
+    <div class="gallery-section">
+        <div class="inner-width">
+            <h1>MY GALLERY</h1>
+            <div class="border"></div>
+            <div id="picture" class="gallery">
+
+                <a href="./Images/1.jpg" class="image">
+                    <img src="./Images/1.jpg" alt="">
+                </a>
+
+                <!-- <a href="./Images/2.jpg" class="image">
+                    <img src="./Images/2.jpg" alt="">
+                </a>
+
+                <a href="./Images/3.jpg" class="image">
+                    <img src="./Images/3.jpg" alt="">
+                </a>
+
+                <a href="./Images/4.jpg" class="image">
+                    <img src="./Images/4.jpg" alt="">
+                </a>
+
+                <a href="./Images/5.jpg" class="image">
+                    <img src="./Images/5.jpg" alt="">
+                </a>
+
+                <a href="./Images/6.jpg" class="image">
+                    <img src="./Images/6.jpg" alt="">
+                </a>
+
+                <a href="./Images/7.jpg" class="image">
+                    <img src="./Images/7.jpg" alt="">
+                </a>
+
+                <a href="./Images/8.jpg" class="image">
+                    <img src="./Images/8.jpg" alt="">
+                </a>
+
+                <a href="./Images/9.jpg" class="image">
+                    <img src="./Images/9.jpg" alt="">
+                </a>
+
+                <a href="./Images/10.jpg" class="image">
+                    <img src="./Images/10.jpg" alt="">
+                </a>
+
+                <a href="./Images/11.jpg" class="image">
+                    <img src="./Images/11.jpg" alt="">
+                </a>
+
+                <a href="./Images/12.jpg" class="image">
+                    <img src="./Images/12.jpg" alt="">
+                </a> -->
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="./app.js"></script>
+</body>
+
+</html>
