@@ -5,6 +5,8 @@ let gallery = document.getElementById('picture');
 var fileData;
 var Pictures = [];
 
+var db = firebase.firestore();
+
 $(".gallery").magnificPopup({
     delegate: 'a',
     type: 'image',
@@ -48,23 +50,69 @@ var uploadImage = async () => {
 
         updateGallery();
 
+        loadSingleImage(URL);
+
+        //database object ki soorat mn input leta hai is lia hmne direct array nh dia balkay usse object k andr dall k dedia
+        await UpdateDocument({ images: Pictures })
+
     } catch (error) {
         console.log(error);
         document.getElementById('loaderForUpload').style.display = "none";
     }
 }
 
-
+// UI WORK
 var updateGallery = () => {
 
     gallery.innerHTML = '';
 
     for (i = 0; i < Pictures.length; i++) {
-        var string =`<a href="${Pictures[i]}" class="image">
+        var string = `<a href="${Pictures[i]}" class="image">
                         <img src="${Pictures[i]}" alt="">
                     </a>`;
 
-        
+
         gallery.innerHTML += string;
     }
 }
+
+var loadSingleImage = (URL) => {
+    document.querySelector('.gallery');
+    let aTag = document.createElement('a');
+    element.classList.add('image');
+    let imgTag = document.createElement('img');
+    aTag.appendChildNode(imgTag);
+
+    gallery.innerHTML = `<a href="${URL}" class="image">
+                            <img src="${URL}" alt="">
+                        </a>`
+}
+
+
+var UpdateDocument = async (data) => {
+    try {
+        var document = await db.collection("Images").doc("Pictures").set(data, { merge: true });
+        // console.log(document);
+        // return document;
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+var ReadDocumentByID = async () => {
+    try {
+        var document = await db.collection("Images").doc("Pictures").get();
+        return document.data()
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+async function Start() {
+    var data = await ReadDocumentByID()
+    Pictures = data.images;
+    updateGallery();
+    console.log(data);
+}
+
+Start()
