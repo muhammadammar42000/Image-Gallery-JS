@@ -32,6 +32,8 @@ inputImage.addEventListener('change', (e) => {
 
 uploadBtn.addEventListener('click', (e) => {
     uploadImage();
+    fileName.innerText = 'None';
+    fileData = '';
 })
 
 var uploadImage = async () => {
@@ -50,10 +52,10 @@ var uploadImage = async () => {
 
         updateGallery();
 
-        loadSingleImage(URL);
-
         //database object ki soorat mn input leta hai is lia hmne direct array nh dia balkay usse object k andr dall k dedia
-        await UpdateDocument({ images: Pictures })
+        await UpdateDocument({ images: Pictures });
+
+        loadSingleImage(URL);
 
     } catch (error) {
         console.log(error);
